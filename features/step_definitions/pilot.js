@@ -16,10 +16,11 @@ module.exports = function () {
     }
     
     this.When(/^I multiple (.*) and (.*)$/, multipling);
-    this.When(/^I multiple the result by (.*)$/, multipling);
+    this.When(/^I multiple the result by (.*)$/, function multiplingFirstOp(firstOp){
+        multipling(firstOp);
+    });
     function multipling(firstOp, secondOp) {
-        // console.log('multipling', secondOp);
-        calc.multiple(firstOp, this.isValidArg(secondOp) ? secondOp : undefined);
+        calc.multiple(firstOp, secondOp);
     }
     
     this.When(/^I subtract (.*) and (.*)$/, subtracting);
