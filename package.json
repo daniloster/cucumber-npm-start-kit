@@ -1,0 +1,13 @@
+{
+    "name": "cucumber-npm-start-kit",
+    "version": "1.0.0",
+    "author": "Danilo Castro",
+    "license": "MIT",
+    "devDependencies": {
+        "cucumber": "^0.9.4",
+        "zombie": "^4.2.1"
+    },
+    "scripts": {
+        "test": "cucumber.js features/**.feature"
+    }
+}
