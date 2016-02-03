@@ -10,9 +10,11 @@ module.exports = function () {
     });
     
     this.When(/^I sum (.*) and (.*)$/, suming);
-    this.When(/^I sum the result with (.*)$/, suming);
+    this.When(/^I sum the result with (.*)$/, function(firstOp) {
+        suming(firstOp);
+    });
     function suming(firstOp, secondOp) {
-        calc.sum(firstOp, this.isValidArg(secondOp) ? secondOp : undefined);
+        calc.sum(firstOp, secondOp);
     }
     
     this.When(/^I multiple (.*) and (.*)$/, multipling);
@@ -24,15 +26,19 @@ module.exports = function () {
     }
     
     this.When(/^I subtract (.*) and (.*)$/, subtracting);
-    this.When(/^I subtract (.*) from the result$/, subtracting);
+    this.When(/^I subtract (.*) from the result$/, function(firstOp) {
+        subtracting(firstOp);
+    });
     function subtracting(firstOp, secondOp) {
-        calc.subtract(firstOp, this.isValidArg(secondOp) ? secondOp : undefined);
+        calc.subtract(firstOp, secondOp);
     }
     
     this.When(/^I divide (.*) and (.*)$/, dividing);
-    this.When(/^I divide the result by (.*)$/, dividing);
+    this.When(/^I divide the result by (.*)$/, function(firstOp) {
+        dividing(firstOp);
+    });
     function dividing(firstOp, secondOp) {
-        calc.divide(firstOp, this.isValidArg(secondOp) ? secondOp : undefined);
+        calc.divide(firstOp, secondOp);
     }
 
     this.Then(/^I should get (.*) as result$/, function (result, callback) {
